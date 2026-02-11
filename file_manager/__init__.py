@@ -6,9 +6,7 @@ from toolkits import loggers
 from pathlib import Path
 
 
-ct = ""
 
-PLATEFORM = ['booking', 'maeva', 'edomizil', 'campings', 'yellohvillage']
 
 
 def create_folder_if_not_exist(folder_path:str) -> None:
@@ -76,30 +74,7 @@ def save_data_to_json(file_path:str, data:object, key:str=None) -> None:
         file_content[key] += [*data]
     create_or_update_json_file(file_path, file_content)
 
-def check_plateform(plateform:str) -> None:
-    global PLATEFORM
-    if plateform.lower() not in PLATEFORM:
-        loggers.show_message('error', 'plateform not reconized')
 
-# def get_selectors(plateform:str) -> object:
-#     check_plateform(plateform)
-#     return get_json_file_content(f"{ct.APPS_FOLDER_PATH}/apps/{plateform}/selectors.json")
-    
-# def get_stations(plateform:str, key:str=None) -> object:
-#     check_plateform(plateform)
-#     if key:
-#         return get_json_file_content(f"{ct.APPS_FOLDER_PATH}/configs/{plateform}/station.json", key)
-#     return get_json_file_content(f"{ct.APPS_FOLDER_PATH}/configs/{plateform}/station.json")
 
-def get_path(plateform:str, folder_name:str) -> str | None:
-    check_plateform(plateform)
-    match folder_name:
-        case 'statics':
-            return f"{ct.APPS_FOLDER_PATH}/statics/{plateform}/"
-        case 'dests':
-            return f"{ct.APPS_FOLDER_PATH}/dests/{plateform}/"
-        case 'log':
-            return f"{ct.LOGS_FOLDER_PATH}/{plateform}/"
-        case 'output':
-            return f"{ct.OUTPUT_FOLDER_PATH}/{plateform}/"
+
         
